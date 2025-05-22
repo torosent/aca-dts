@@ -4,21 +4,23 @@ This project demonstrates a secure code evaluation system that combines Azure Co
 
 ## Architecture
 
-![Architecture Diagram](https://raw.githubusercontent.com/Azure/azure-sdk-for-net/main/sdk/containerapp/Azure.ResourceManager.AppContainers/samples/Sample1_ManageContainerApp.md)
-
 ### Components
 
 - **Azure Container Apps Session Pool**: Provides isolated Python runtime environments for executing code
 - **Azure Durable Task Scheduler**: Orchestrates the workflow with persistence and reliability
-- **ASP.NET Core API**: Exposes endpoints for code submission and approval
+- **Azure Container Apps**: Exposes endpoints (Web API) for code submission, approval and hosts the durabale workers.
 
 ### Workflow
 
-1. Code is submitted through the API
-2. The Durable Task orchestration executes the code in an isolated Container Apps session
-3. Results are stored as custom status in the orchestration
-4. The workflow waits for human approval (or times out after 24 hours)
-5. The approval status is returned as the final result
+```mermaid
+flowchart TD
+    A[User Submits Code] --> B[Orchestration Instance]
+    B --> C[Execute Code in Secure Dynamic Session]
+    C --> D[Receive Evaluation Results]
+    D --> E[Wait for Human Intervention]
+    E -->|Yes Approval| F[Continue Workflow]
+    E -->|No or Timeout| G[Reject / Timeout]
+```
 
 ## Prerequisites
 
