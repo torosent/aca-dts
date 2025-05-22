@@ -56,12 +56,10 @@ az containerapp sessionpool create \
     --cooldown-period 300 \
     --network-status EgressDisabled
 
-az containerapp sessionpool show \
-    --name $SESSION_POOL_NAME \
-    --resource-group $RESOURCE_GROUP \
-    --query 'properties.poolManagementEndpoint' -o tsv
-
 # Store the session pool URL in a variable
+# Ensure that the identity you are using has the necessary permissions to execute and create sessions. 
+# If you are developing locally, this permission must be granted to your identity.
+# If you are deploying in ACA, the managed identity assigned to ACA must have this permission.
 SESSION_POOL_URL=$(az containerapp sessionpool show \
     --name $SESSION_POOL_NAME \
     --resource-group $RESOURCE_GROUP \
