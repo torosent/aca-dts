@@ -31,7 +31,7 @@ flowchart TD
 
 ## Setup Azure Resources
 
-The `commands.sh` script contains all necessary Azure CLI commands to set up required resources.
+The following bash commands contains all necessary Azure CLI commands to set up required resources.
 
 ```bash
 # Set variables
