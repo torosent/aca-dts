@@ -1,0 +1,34 @@
+# .NET build folders
+bin/
+obj/
+
+# Development and source control files
+.git/
+.github/
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+# Local environment and configuration files
+appsettings.Development.json
+.env
+*.local
+
+# Git and version control files
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+LICENSE
+
+# Scripts
+*.sh
+*.cmd
+*.ps1
+
+# Docker and deployment files
+Dockerfile
+.dockerignore
