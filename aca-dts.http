@@ -1,0 +1,12 @@
+@aca_dts_HostAddress = http://localhost:5125
+
+POST {{aca_dts_HostAddress}}/code/execute
+Content-Type: application/json
+
+"print('Hello, world!')"
+
+###
+
+@approve = true
+@requestId= 290538d5-a5c5-47a1-a6aa-26c0facfb900
+POST {{aca_dts_HostAddress}}/code/review?approve={{approve}}&requestId={{requestId}}
